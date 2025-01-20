@@ -3,6 +3,7 @@ import pandas as pd
 
 class BusinessManager:
 
+    # Creates a new ad account and appends its details to a CSV file
     def create_ad_account(
         name, currency, timezone, end_advertizer, media_agency, partner
     ):
@@ -33,6 +34,7 @@ class BusinessManager:
         except Exception as e:
             print("some error occurred ", e)
 
+    # Removes an ad account from the CSV file based on the given end_advertizer_id
     def remove_ad_account(end_advertizer_id):
         try:
             df = pd.read_csv("data.csv")
@@ -45,6 +47,7 @@ class BusinessManager:
         except Exception as e:
             print("some error occurred during deletion ", e)
 
+    # Retrieves and prints ad account details based on the given end_advertizer_id
     def get_account_info(end_advertizer_id):
         try:
             df = pd.read_csv("data.csv")
@@ -59,6 +62,8 @@ class BusinessManager:
 
 
 class AdAccount:
+
+    # Initializes an AdAccount object with its properties
     def __init__(
         self, name, currency, timezone_id, end_advertizer, media_agency, partner
     ):
@@ -69,6 +74,7 @@ class AdAccount:
         self.media_agency = media_agency
         self.partner = partner
 
+    # Prints the details of the ad account
     def print_ad_account_info(self):
         print(
             f""" name : {self.name}, currency:{self.currency}, timezone:{self.timezone_id},
